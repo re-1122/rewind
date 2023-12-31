@@ -1,0 +1,67 @@
+{
+  "block.chest.close": {
+    "sounds": [
+      "minecraft:random/chestclosed"
+    ],
+    "subtitle": "subtitles.block.chest.close"
+  },
+  "block.chest.open": {
+    "sounds": [
+      "minecraft:random/chestopen"
+    ],
+    "subtitle": "subtitles.block.chest.open"
+  },
+  "block.door.open": {
+    "sounds": [
+      "minecraft:random/door_close",
+      "minecraft:random/door_open"
+    ],
+    "subtitle": "subtitles.block.door.toggle"
+  },
+  "block.door.close": {
+    "sounds": [
+      "minecraft:random/door_close",
+      "minecraft:random/door_open"
+    ],
+    "subtitle": "subtitles.block.door.toggle"
+  },
+  "block.trapdoor.open": {
+    "sounds": [
+      "minecraft:random/door_close",
+      "minecraft:random/door_open"
+    ],
+    "subtitle": "subtitles.block.trapdoor.toggle"
+  },
+  "block.trapdoor.close": {
+    "sounds": [
+      "minecraft:random/door_close",
+      "minecraft:random/door_open"
+    ],
+    "subtitle": "subtitles.block.trapdoor.toggle"
+  },
+  "block.fence_gate.open": {
+    "sounds": [
+      "minecraft:random/door_close",
+      "minecraft:random/door_open"
+    ],
+    "subtitle": "subtitles.block.fence_gate.toggle"
+  },
+  "block.fence_gate.close": {
+    "sounds": [
+      "minecraft:random/door_close",
+      "minecraft:random/door_open"
+    ],
+    "subtitle": "subtitles.block.fence_gate.toggle"
+  },
+  "block.glass.place": {
+    "sounds": [
+      "step/stone1",
+      "step/stone2",
+      "step/stone3",
+      "step/stone4",
+      "step/stone5",
+      "step/stone6"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  }
+}
