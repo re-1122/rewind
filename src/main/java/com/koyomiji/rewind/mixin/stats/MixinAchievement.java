@@ -13,15 +13,19 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(Achievement.class)
 public abstract class MixinAchievement extends StatBase {
-  @Shadow public abstract boolean getSpecial();
+  @Shadow(remap = false) public abstract boolean getSpecial();
 
-  @Shadow public abstract String getDescription();
+  @Shadow(remap = false) public abstract String getDescription();
 
   public MixinAchievement(String statIdIn, ITextComponent statNameIn,
                           IStatType formatterIn) {
     super(statIdIn, statNameIn, formatterIn);
   }
 
+  /**
+   * @author Komichi
+   * @reason Add hover text to achievements
+   */
   @Overwrite
   public ITextComponent getStatName() {
     ITextComponent name = super.getStatName();
