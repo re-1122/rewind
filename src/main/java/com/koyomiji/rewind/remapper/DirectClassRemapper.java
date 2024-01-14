@@ -30,7 +30,6 @@ public class DirectClassRemapper extends ClassRemapper {
     int lastParamIndex =
         TypeHelper.lastParamIndex(Type.getArgumentTypes(desc), isStatic);
     String[] paramNames = mapping.getParamNames(methodIdentifier);
-    ReWind.logger.info(Arrays.toString(paramNames));
 
     return new MethodVisitor(api, mv) {
       int paramIndex = 0;
