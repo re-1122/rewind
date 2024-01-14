@@ -212,6 +212,10 @@ public class ReWindConfig {
           "[-1.9.4] Use oak planks instead of acacia planks in acacia villages.")
   public static boolean useOakPlanksInAcaciaVillages = true;
 
+  @Config.Comment(
+          "[-1.9.4] Replace grass path in villages with gravel.")
+  public static boolean gravelPathInVillages = true;
+
   public static Sounds sounds = new Sounds();
 
   public static class Sounds {
