@@ -2,6 +2,7 @@ package com.koyomiji.rewind;
 
 import com.google.common.collect.Maps;
 import com.koyomiji.refound.asset.AssetFetcher;
+import com.koyomiji.refound.asset.AssetIdentifier;
 import com.koyomiji.refound.asset.FileInjector;
 import com.koyomiji.rewind.remapper.DirectClassRemapper;
 import com.koyomiji.rewind.remapper.FMLClassRemapper;
@@ -156,6 +157,28 @@ public class Setup {
     return className + ".class";
   }
 
+  private static Path fetchAndGetPath(AssetFetcher af, AssetIdentifier asset) {
+    ReWind.logger.info("Fetching " + asset.url + "...");
+
+    boolean didFetch = true;
+
+    if (af.queryCache(asset) != null) {
+      didFetch = false;
+      ReWind.logger.info("Found " + asset.url + " in cache.");
+    }
+
+    Stopwatch sw = new Stopwatch();
+    sw.start();
+    Path result = af.fetchAndGetPath(asset);
+    sw.stop();
+
+    if (didFetch) {
+      ReWind.logger.info("Fetched " + asset.url + " in " + sw.getElapsedInSeconds() + "s.");
+    }
+
+    return result;
+  }
+
   public static void setupIfNecessary() {
     FileInjector assetInjector = new FileInjector(ReWind.modFile);
 
@@ -163,16 +186,23 @@ public class Setup {
       return;
     }
 
+    ReWind.logger.info("Beginning setup...");
+    Stopwatch swTotal = new Stopwatch();
+    swTotal.start();
+    Stopwatch sw = new Stopwatch();
+
     initialRun = true;
     CreditsGenerator cg = new CreditsGenerator();
 
     Mapping mapping = getMapping();
     AssetFetcher assetFetcher = new AssetFetcher();
-    Path client1_11_2Path = assetFetcher.fetchAndGetPath(Assets.client1_11_2);
+    Path client1_11_2Path = fetchAndGetPath(assetFetcher, Assets.client1_11_2);
 
     try (JarFile client1_11_2 = new JarFile(client1_11_2Path.toFile())) {
       for (String className : ACHIEVEMENT_CLASSES) {
         String className1_11_2 = mapping.unmapClassName(className);
+        sw.start();
+
         JarEntry entry =
             client1_11_2.getJarEntry(classNameToPath(className1_11_2));
         InputStream is = client1_11_2.getInputStream(entry);
@@ -185,16 +215,25 @@ public class Setup {
         reader.accept(dcr, 0);
 
         assetInjector.add(classNameToPath(className), writer.toByteArray());
-
         cg.add(Assets.client1_11_2, classNameToPath(className));
+
+        sw.stop();
+        ReWind.logger.info("Remapped " + className1_11_2 + " in " + sw.getElapsedInSeconds() + "s.");
       }
 
       for (String file : FILES) {
+        sw.start();
+
         byte[] bytes = IOHelper.readAllBytes(
             client1_11_2.getInputStream(client1_11_2.getJarEntry(file)));
         assetInjector.add(file, bytes);
         cg.add(Assets.client1_11_2, file);
+
+        sw.stop();
+        ReWind.logger.info("Extracted " + file + " in " + sw.getElapsedInSeconds() + "s.");
       }
+
+      sw.start();
 
       String langEnUs = IOHelper.readAllUTF8(client1_11_2.getInputStream(
           client1_11_2.getJarEntry(LANG_EN_US_FILENAME)));
@@ -203,19 +242,30 @@ public class Setup {
                         RawLanguageMap.stringify(extractLang(enUs))
                             .getBytes(StandardCharsets.UTF_8));
       cg.add(Assets.client1_11_2, "assets/rewind/lang/en_us.lang");
+
+      sw.stop();
+      ReWind.logger.info("Generated assets/rewind/lang/en_us.lang" +
+                         " in " + sw.getElapsedInSeconds() + "s.");
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
 
-    Path client1_7_10Path = assetFetcher.fetchAndGetPath(Assets.client1_7_10);
+    Path client1_7_10Path = fetchAndGetPath(assetFetcher, Assets.client1_7_10);
 
     try (JarFile client1_7_10 = new JarFile(client1_7_10Path.toFile())) {
       for (Map.Entry<String, String> e : FILES_1_7_10.entrySet()) {
+        sw.start();
+
         byte[] bytes = IOHelper.readAllBytes(
             client1_7_10.getInputStream(client1_7_10.getJarEntry(e.getKey())));
         assetInjector.add(e.getValue(), bytes);
         cg.add(Assets.client1_7_10, e.getValue());
+
+        sw.stop();
+        ReWind.logger.info("Extracted " + e.getKey() + " in " + sw.getElapsedInSeconds() + "s.");
       }
+
+      sw.start();
 
       BufferedImage inventory =
           ImageIO.read(client1_7_10.getInputStream(client1_7_10.getEntry(
@@ -228,25 +278,31 @@ public class Setup {
                         os.toByteArray());
       cg.add(Assets.client1_7_10,
              "assets/rewind/textures/gui/container/absorption.png");
+
+      sw.stop();
+      ReWind.logger.info("Generated assets/rewind/textures/gui/container/absorption.png in " + sw.getElapsedInSeconds() + "s.");
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
 
     assetInjector.add(CREDIT_FILENAME,
                       cg.generate().getBytes(StandardCharsets.UTF_8));
+
+    ReWind.logger.info("Injecting files...");
+    sw.start();
     assetInjector.commit();
+    sw.stop();
+    ReWind.logger.info("Injected files in " + sw.getElapsedInSeconds() + "s.");
 
     try {
       UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-    } catch (ClassNotFoundException e) {
-      throw new RuntimeException(e);
-    } catch (InstantiationException e) {
-      throw new RuntimeException(e);
-    } catch (IllegalAccessException e) {
-      throw new RuntimeException(e);
-    } catch (UnsupportedLookAndFeelException e) {
+    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+             UnsupportedLookAndFeelException e) {
       throw new RuntimeException(e);
     }
+
+    swTotal.stop();
+    ReWind.logger.info("Setup completed in " + swTotal.getElapsedInSeconds() + "s.");
 
     JOptionPane.showMessageDialog(
         null, "ReWind has been set up successfully. Please restart the game.",
@@ -264,5 +320,25 @@ public class Setup {
     }
 
     return extracted;
+  }
+
+  private static class Stopwatch {
+    private long begin;
+    private long end;
+
+    public Stopwatch() {
+    }
+
+    public void start() {
+      begin = System.currentTimeMillis();
+    }
+
+    public void stop() {
+      end = System.currentTimeMillis();
+    }
+
+    public double getElapsedInSeconds() {
+      return (end - begin) / 1000.0;
+    }
   }
 }
