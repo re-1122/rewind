@@ -9,22 +9,18 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(StructureVillagePieces.Start.class)
 public class MixinStructureVillagePieces$Start
     extends StructureVillagePieces.Well {
-  @Inject(
-      method =
-          "<init>(Lnet/minecraft/world/biome/BiomeProvider;ILjava/util/Random;IILjava/util/List;I)V",
-      at = @At(value = "RETURN"))
-  private void
-  mixin(BiomeProvider biomeProviderIn, int p_i2104_2_, Random rand,
-        int p_i2104_4_, int p_i2104_5_,
-        List<StructureVillagePieces.PieceWeight> p_i2104_6_, int p_i2104_7_,
-        CallbackInfo ci) {
+  @Redirect(method = "<init>(Lnet/minecraft/world/biome/BiomeProvider;ILjava/util/Random;IILjava/util/List;I)V", at = @At(value = "INVOKE", target = "Ljava/util/Random;nextInt(I)I"))
+  private int mixin(Random random, int bound) {
     if (ReWindConfig.preventZombieVillage) {
-      this.isZombieInfested = false;
+      return 1;
     }
+
+    return random.nextInt(bound);
   }
 }

@@ -200,6 +200,10 @@ public class ReWindConfig {
       "[-1.8.9] Strength effect increases the player's damage by 130%, weakness effect decreases it by 50%, and the duration of potion effects is changed.")
   public static boolean traditionalPotionEffects = true;
 
+  @Config.Comment(
+          "[-1.9.4] Prevent villages from being generated across biome boundaries.")
+  public static boolean biomeBoundedVillages = true;
+
   public static Sounds sounds = new Sounds();
 
   public static class Sounds {

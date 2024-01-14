@@ -95,7 +95,9 @@
     "world.biome.MixinBiomeHell",
     "world.end.MixinDragonSpawnManager$3",
     "world.gen.feature.MixinWorldGenSpikes",
+    "world.gen.structure.MixinStructureVillagePieces",
     "world.gen.structure.MixinStructureVillagePieces$Start",
+    "world.gen.structure.MixinStructureVillagePieces$Village",
     "world.storage.loot.functions.MixinEnchantRandomly"
   ],
   "client": [
