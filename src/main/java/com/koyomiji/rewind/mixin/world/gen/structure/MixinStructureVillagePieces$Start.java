@@ -7,9 +7,7 @@ import net.minecraft.world.biome.*;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(StructureVillagePieces.Start.class)
@@ -22,5 +20,14 @@ public class MixinStructureVillagePieces$Start
     }
 
     return random.nextInt(bound);
+  }
+
+  @ModifyConstant(method = "<init>(Lnet/minecraft/world/biome/BiomeProvider;ILjava/util/Random;IILjava/util/List;I)V", constant = @Constant(intValue = 2))
+  private int mixin2(int constant) {
+    if (ReWindConfig.useOakPlanksInAcaciaVillages) {
+      return 0;
+    }
+
+    return constant;
   }
 }

@@ -208,6 +208,10 @@ public class ReWindConfig {
           "[-1.9.4] Prevent generating villages in the taiga biome.")
   public static boolean noTaigaVillage = true;
 
+  @Config.Comment(
+          "[-1.9.4] Use oak planks instead of acacia planks in acacia villages.")
+  public static boolean useOakPlanksInAcaciaVillages = true;
+
   public static Sounds sounds = new Sounds();
 
   public static class Sounds {
