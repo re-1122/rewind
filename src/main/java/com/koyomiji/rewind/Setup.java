@@ -236,6 +236,18 @@ public class Setup {
                       cg.generate().getBytes(StandardCharsets.UTF_8));
     assetInjector.commit();
 
+    try {
+      UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException(e);
+    } catch (InstantiationException e) {
+      throw new RuntimeException(e);
+    } catch (IllegalAccessException e) {
+      throw new RuntimeException(e);
+    } catch (UnsupportedLookAndFeelException e) {
+      throw new RuntimeException(e);
+    }
+
     JOptionPane.showMessageDialog(
         null, "ReWind has been set up successfully. Please restart the game.",
         "ReWind", JOptionPane.INFORMATION_MESSAGE);
