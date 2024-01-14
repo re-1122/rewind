@@ -13,6 +13,7 @@ import net.minecraft.client.resources.IResourcePack;
 import net.minecraft.client.resources.data.IMetadataSection;
 import net.minecraft.client.resources.data.MetadataSerializer;
 import net.minecraft.util.ResourceLocation;
+import org.apache.commons.io.FilenameUtils;
 
 public class NoBlockRotateResourcePack implements IResourcePack {
   private static Set<String> blockstates = Sets.newHashSet(
@@ -39,8 +40,7 @@ public class NoBlockRotateResourcePack implements IResourcePack {
   @Override
   public InputStream getInputStream(ResourceLocation location)
       throws IOException {
-    return ReWind.getInputStream(
-        Paths.get("assets/rewind").resolve(location.getPath()));
+    return ReWind.getInputStream(FilenameUtils.concat("assets/rewind/", location.getPath()));
   }
 
   @Override

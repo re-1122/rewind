@@ -88,8 +88,4 @@ public class ReWind {
       }
     }
   }
-
-  public static InputStream getInputStream(Path path) {
-    return getInputStream(path.toString());
-  }
 }
