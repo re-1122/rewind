@@ -11,8 +11,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.jar.JarFile;
 import net.minecraft.command.server.CommandAchievement;
+import net.minecraft.init.Biomes;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -53,6 +55,10 @@ public class ReWind {
   public void init(FMLInitializationEvent event) {
     Setup.setupIfNecessary();
     proxy.init(event);
+
+    if (ReWindConfig.noTaigaVillage) {
+      BiomeManager.removeVillageBiome(Biomes.TAIGA);
+    }
   }
 
   @Mod.EventHandler

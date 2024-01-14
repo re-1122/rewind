@@ -204,6 +204,10 @@ public class ReWindConfig {
           "[-1.9.4] Prevent villages from being generated across biome boundaries.")
   public static boolean biomeBoundedVillages = true;
 
+  @Config.Comment(
+          "[-1.9.4] Prevent generating villages in the taiga biome.")
+  public static boolean noTaigaVillage = true;
+
   public static Sounds sounds = new Sounds();
 
   public static class Sounds {
