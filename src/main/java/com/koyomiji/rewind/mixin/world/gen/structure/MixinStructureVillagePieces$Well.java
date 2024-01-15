@@ -9,13 +9,16 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(StructureVillagePieces.Well.class)
-public abstract class MixinStructureVillagePieces$Well extends StructureVillagePieces.Village {
-    @ModifyVariable(method = "addComponentParts", at = @At(value = "LOAD", ordinal = 3), name = "iblockstate")
-    private IBlockState mixin(IBlockState value) {
-        if (ReWindConfig.gravelPathInVillages) {
-            return this.getBiomeSpecificBlockState(Blocks.GRAVEL.getDefaultState());
-        }
-
-        return value;
+public abstract class MixinStructureVillagePieces$Well
+    extends StructureVillagePieces.Village {
+  @ModifyVariable(method = "addComponentParts",
+                  at = @At(value = "LOAD", ordinal = 3), name = "iblockstate")
+  private IBlockState
+  mixin(IBlockState value) {
+    if (ReWindConfig.gravelPathInVillages) {
+      return this.getBiomeSpecificBlockState(Blocks.GRAVEL.getDefaultState());
     }
+
+    return value;
+  }
 }

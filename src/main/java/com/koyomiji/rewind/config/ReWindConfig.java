@@ -201,19 +201,17 @@ public class ReWindConfig {
   public static boolean traditionalPotionEffects = true;
 
   @Config.Comment(
-          "[-1.9.4] Prevent villages from being generated across biome boundaries.")
+      "[-1.9.4] Prevent villages from being generated across biome boundaries.")
   public static boolean biomeBoundedVillages = true;
 
-  @Config.Comment(
-          "[-1.9.4] Prevent generating villages in the taiga biome.")
+  @Config.Comment("[-1.9.4] Prevent generating villages in the taiga biome.")
   public static boolean noTaigaVillage = true;
 
   @Config.Comment(
-          "[-1.9.4] Use oak planks instead of acacia planks in acacia villages.")
+      "[-1.9.4] Use oak planks instead of acacia planks in acacia villages.")
   public static boolean useOakPlanksInAcaciaVillages = true;
 
-  @Config.Comment(
-          "[-1.9.4] Replace grass path in villages with gravel.")
+  @Config.Comment("[-1.9.4] Replace grass path in villages with gravel.")
   public static boolean gravelPathInVillages = true;
 
   public static Sounds sounds = new Sounds();

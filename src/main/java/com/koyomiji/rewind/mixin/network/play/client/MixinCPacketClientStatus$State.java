@@ -10,7 +10,10 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(CPacketClientStatus.State.class)
 public class MixinCPacketClientStatus$State {
-  @Shadow(remap = false) @Final @Mutable private static CPacketClientStatus.State[] $VALUES;
+  @Shadow(remap = false)
+  @Final
+  @Mutable
+  private static CPacketClientStatus.State[] $VALUES;
   private static CPacketClientStatus.State OPEN_INVENTORY_ACHIEVEMENT =
       add("OPEN_INVENTORY_ACHIEVEMENT");
 
