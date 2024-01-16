@@ -293,15 +293,15 @@ public class Setup {
     sw.stop();
     ReWind.logger.info("Injected files in " + sw.getElapsedInSeconds() + "s.");
 
+    swTotal.stop();
+    ReWind.logger.info("Setup completed in " + swTotal.getElapsedInSeconds() + "s.");
+
     try {
       UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
     } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
              UnsupportedLookAndFeelException e) {
       throw new RuntimeException(e);
     }
-
-    swTotal.stop();
-    ReWind.logger.info("Setup completed in " + swTotal.getElapsedInSeconds() + "s.");
 
     JOptionPane.showMessageDialog(
         null, "ReWind has been set up successfully. Please restart the game.",
