@@ -1,10 +1,8 @@
 package com.koyomiji.rewind;
 
 import com.koyomiji.refound.asset.AssetIdentifier;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+
+import java.util.*;
 
 public class CreditsGenerator {
   public Map<AssetIdentifier, Set<String>> assets = new HashMap<>();
@@ -24,10 +22,16 @@ public class CreditsGenerator {
     sb.append(
         "The following files are not part of the distributed jar file and were obtained at runtime.\n");
 
+    List<Map.Entry<AssetIdentifier, Set<String>>> entries = new ArrayList<>(assets.entrySet());
+    entries.sort(Comparator.comparing(e -> e.getKey().url.toString()));
+
     for (Map.Entry<AssetIdentifier, Set<String>> e : assets.entrySet()) {
       sb.append("From ").append(e.getKey().url).append(":\n");
 
-      for (String path : e.getValue()) {
+      List<String> paths = new ArrayList<>(e.getValue());
+      paths.sort(Comparator.naturalOrder());
+
+      for (String path : paths) {
         sb.append("  ").append(path).append("\n");
       }
     }
