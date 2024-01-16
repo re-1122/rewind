@@ -26,8 +26,6 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 
 public class Setup {
-  private static boolean initialRun = false;
-
   private static final String[] ACHIEVEMENT_CLASSES = {
       "net/minecraft/client/gui/achievement/GuiAchievement",
       "net/minecraft/client/gui/achievement/GuiAchievements",
@@ -193,7 +191,6 @@ public class Setup {
     swTotal.start();
     Stopwatch sw = new Stopwatch();
 
-    initialRun = true;
     CreditsGenerator cg = new CreditsGenerator();
 
     Mapping mapping = getMapping();
