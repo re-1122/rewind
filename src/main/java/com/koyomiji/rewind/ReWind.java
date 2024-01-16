@@ -3,13 +3,15 @@ package com.koyomiji.rewind;
 import com.koyomiji.refound.RecipeUnregisterer;
 import com.koyomiji.rewind.config.ReWindConfig;
 import com.koyomiji.rewind.proxy.CommonProxy;
-import com.koyomiji.rewind.remapper.IOHelper;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.jar.JarFile;
+
+import com.koyomiji.rewind.setup.Setup;
 import net.minecraft.command.server.CommandAchievement;
 import net.minecraft.init.Biomes;
 import net.minecraft.launchwrapper.Launch;

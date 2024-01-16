@@ -1,4 +1,4 @@
-package com.koyomiji.rewind;
+package com.koyomiji.rewind.setup;
 
 import com.koyomiji.refound.asset.AssetIdentifier;
 

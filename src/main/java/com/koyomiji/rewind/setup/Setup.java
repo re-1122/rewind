@@ -1,9 +1,11 @@
-package com.koyomiji.rewind;
+package com.koyomiji.rewind.setup;
 
 import com.google.common.collect.Maps;
 import com.koyomiji.refound.asset.AssetFetcher;
 import com.koyomiji.refound.asset.AssetIdentifier;
 import com.koyomiji.refound.asset.FileInjector;
+import com.koyomiji.rewind.ReWind;
+import com.koyomiji.rewind.TextureEditor;
 import com.koyomiji.rewind.remapper.DirectClassRemapper;
 import com.koyomiji.rewind.remapper.FMLClassRemapper;
 import com.koyomiji.rewind.remapper.IOHelper;

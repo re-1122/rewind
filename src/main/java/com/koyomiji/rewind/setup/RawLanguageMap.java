@@ -1,4 +1,4 @@
-package com.koyomiji.rewind;
+package com.koyomiji.rewind.setup;
 
 import java.util.HashMap;
 import java.util.Map;
