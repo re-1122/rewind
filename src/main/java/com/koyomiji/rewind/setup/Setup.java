@@ -145,7 +145,7 @@ public class Setup {
                      "assets/rewind/textures/blocks/tallgrass.png");
   }
 
-  private static final String CREDIT_FILENAME = "credits.txt";
+  private static final String CREDITS_FILENAME = "credits.txt";
   private static final String MAPPING_FILENAME = "mappings.json";
 
   private static Mapping getMapping() {
@@ -182,7 +182,7 @@ public class Setup {
   public static void setupIfNecessary() {
     FileInjector assetInjector = new FileInjector(ReWind.modFile);
 
-    if (assetInjector.exists(CREDIT_FILENAME)) {
+    if (assetInjector.exists(CREDITS_FILENAME)) {
       return;
     }
 
@@ -284,7 +284,7 @@ public class Setup {
       throw new RuntimeException(e);
     }
 
-    assetInjector.add(CREDIT_FILENAME,
+    assetInjector.add(CREDITS_FILENAME,
                       cg.generate().getBytes(StandardCharsets.UTF_8));
 
     ReWind.logger.info("Injecting files...");
