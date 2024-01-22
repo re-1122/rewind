@@ -33,6 +33,7 @@ public class NoBlockRotateResourcePack implements IResourcePack {
       "minecraft:blockstates/red_concrete_powder.json",
       "minecraft:blockstates/red_sand.json", "minecraft:blockstates/sand.json",
       "minecraft:blockstates/silver_concrete_powder.json",
+      "minecraft:blockstates/stone.json",
       "minecraft:blockstates/white_concrete_powder.json",
       "minecraft:blockstates/yellow_concrete_powder.json");
 
