@@ -27,12 +27,20 @@ public abstract class MixinWorldGenSpikes extends WorldGenerator {
     return original;
   }
 
-  @Redirect(method = "generate", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/gen/feature/WorldGenSpikes;setBlockAndNotifyAdequately(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/state/IBlockState;)V", ordinal = 1))
-    private void mixin2(WorldGenSpikes instance, World world, BlockPos blockPos, IBlockState iBlockState) {
-        if (ReWindConfig.classicEndSpikes) {
-          return;
-        }
-
-        setBlockAndNotifyAdequately(world, blockPos, iBlockState);
+  @Redirect(
+      method = "generate",
+      at = @At(
+          value = "INVOKE",
+          target =
+              "Lnet/minecraft/world/gen/feature/WorldGenSpikes;setBlockAndNotifyAdequately(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/state/IBlockState;)V",
+          ordinal = 1))
+  private void
+  mixin2(WorldGenSpikes instance, World world, BlockPos blockPos,
+         IBlockState iBlockState) {
+    if (ReWindConfig.classicEndSpikes) {
+      return;
     }
+
+    setBlockAndNotifyAdequately(world, blockPos, iBlockState);
+  }
 }

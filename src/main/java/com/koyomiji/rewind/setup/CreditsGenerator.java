@@ -1,7 +1,6 @@
 package com.koyomiji.rewind.setup;
 
 import com.koyomiji.refound.asset.AssetIdentifier;
-
 import java.util.*;
 
 public class CreditsGenerator {
@@ -22,7 +21,8 @@ public class CreditsGenerator {
     sb.append(
         "The following files are not part of the distributed jar file and were obtained at runtime.\n");
 
-    List<Map.Entry<AssetIdentifier, Set<String>>> entries = new ArrayList<>(assets.entrySet());
+    List<Map.Entry<AssetIdentifier, Set<String>>> entries =
+        new ArrayList<>(assets.entrySet());
     entries.sort(Comparator.comparing(e -> e.getKey().url.toString()));
 
     for (Map.Entry<AssetIdentifier, Set<String>> e : assets.entrySet()) {

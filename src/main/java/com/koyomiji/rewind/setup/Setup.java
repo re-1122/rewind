@@ -173,7 +173,8 @@ public class Setup {
     sw.stop();
 
     if (didFetch) {
-      ReWind.logger.info("Fetched " + asset.url + " in " + sw.getElapsedInSeconds() + "s.");
+      ReWind.logger.info("Fetched " + asset.url + " in " +
+                         sw.getElapsedInSeconds() + "s.");
     }
 
     return result;
@@ -217,7 +218,8 @@ public class Setup {
         cg.add(Assets.client1_11_2, classNameToPath(className));
 
         sw.stop();
-        ReWind.logger.info("Remapped " + className1_11_2 + " in " + sw.getElapsedInSeconds() + "s.");
+        ReWind.logger.info("Remapped " + className1_11_2 + " in " +
+                           sw.getElapsedInSeconds() + "s.");
       }
 
       for (String file : FILES) {
@@ -229,7 +231,8 @@ public class Setup {
         cg.add(Assets.client1_11_2, file);
 
         sw.stop();
-        ReWind.logger.info("Extracted " + file + " in " + sw.getElapsedInSeconds() + "s.");
+        ReWind.logger.info("Extracted " + file + " in " +
+                           sw.getElapsedInSeconds() + "s.");
       }
 
       sw.start();
@@ -243,8 +246,8 @@ public class Setup {
       cg.add(Assets.client1_11_2, "assets/rewind/lang/en_us.lang");
 
       sw.stop();
-      ReWind.logger.info("Generated assets/rewind/lang/en_us.lang" +
-                         " in " + sw.getElapsedInSeconds() + "s.");
+      ReWind.logger.info("Generated assets/rewind/lang/en_us.lang"
+                         + " in " + sw.getElapsedInSeconds() + "s.");
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -261,7 +264,8 @@ public class Setup {
         cg.add(Assets.client1_7_10, e.getValue());
 
         sw.stop();
-        ReWind.logger.info("Extracted " + e.getKey() + " in " + sw.getElapsedInSeconds() + "s.");
+        ReWind.logger.info("Extracted " + e.getKey() + " in " +
+                           sw.getElapsedInSeconds() + "s.");
       }
 
       sw.start();
@@ -279,7 +283,9 @@ public class Setup {
              "assets/rewind/textures/gui/container/absorption.png");
 
       sw.stop();
-      ReWind.logger.info("Generated assets/rewind/textures/gui/container/absorption.png in " + sw.getElapsedInSeconds() + "s.");
+      ReWind.logger.info(
+          "Generated assets/rewind/textures/gui/container/absorption.png in " +
+          sw.getElapsedInSeconds() + "s.");
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -294,12 +300,13 @@ public class Setup {
     ReWind.logger.info("Injected files in " + sw.getElapsedInSeconds() + "s.");
 
     swTotal.stop();
-    ReWind.logger.info("Setup completed in " + swTotal.getElapsedInSeconds() + "s.");
+    ReWind.logger.info("Setup completed in " + swTotal.getElapsedInSeconds() +
+                       "s.");
 
     try {
       UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
-             UnsupportedLookAndFeelException e) {
+    } catch (ClassNotFoundException | InstantiationException |
+             IllegalAccessException | UnsupportedLookAndFeelException e) {
       throw new RuntimeException(e);
     }
 

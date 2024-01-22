@@ -3,13 +3,12 @@ package com.koyomiji.rewind.resources;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import com.koyomiji.rewind.ReWind;
+import com.koyomiji.rewind.util.PathHelper;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Set;
 import javax.annotation.Nullable;
-
-import com.koyomiji.rewind.util.PathHelper;
 import net.minecraft.client.resources.IResourcePack;
 import net.minecraft.client.resources.data.IMetadataSection;
 import net.minecraft.client.resources.data.MetadataSerializer;
@@ -40,7 +39,8 @@ public class NoBlockRotateResourcePack implements IResourcePack {
   @Override
   public InputStream getInputStream(ResourceLocation location)
       throws IOException {
-    return ReWind.getInputStream(PathHelper.concatUnix("assets/rewind/", location.getPath()));
+    return ReWind.getInputStream(
+        PathHelper.concatUnix("assets/rewind/", location.getPath()));
   }
 
   @Override
