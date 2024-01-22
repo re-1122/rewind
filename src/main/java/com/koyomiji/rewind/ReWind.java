@@ -1,6 +1,7 @@
 package com.koyomiji.rewind;
 
 import com.koyomiji.refound.RecipeUnregisterer;
+import com.koyomiji.refound.setup.SetupQueue;
 import com.koyomiji.rewind.config.ReWindConfig;
 import com.koyomiji.rewind.proxy.CommonProxy;
 import com.koyomiji.rewind.setup.Setup;
@@ -23,7 +24,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = ReWind.MODID, dependencies = "required-after:refound@[0.1.0,)")
+@Mod(modid = ReWind.MODID, dependencies = "required-after:refound@[0.2.0,)")
 public class ReWind {
   public static final String MODID = "rewind";
   @Mod.Instance public static ReWind instance;
@@ -49,11 +50,11 @@ public class ReWind {
     isDeobfuscatedEnvironment =
         (boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment");
     proxy.preInit(event);
+    SetupQueue.addSetupProcess(new Setup());
   }
 
   @Mod.EventHandler
   public void init(FMLInitializationEvent event) {
-    Setup.setupIfNecessary();
     proxy.init(event);
 
     if (ReWindConfig.noTaigaVillage) {

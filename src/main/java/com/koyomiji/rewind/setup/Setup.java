@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.koyomiji.refound.asset.AssetFetcher;
 import com.koyomiji.refound.asset.AssetIdentifier;
 import com.koyomiji.refound.asset.FileInjector;
+import com.koyomiji.refound.setup.ISetupProcess;
 import com.koyomiji.rewind.ReWind;
 import com.koyomiji.rewind.TextureEditor;
 import com.koyomiji.rewind.remapper.DirectClassRemapper;
@@ -25,7 +26,7 @@ import javax.swing.*;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 
-public class Setup {
+public class Setup implements ISetupProcess {
   private static final String[] ACHIEVEMENT_CLASSES = {
       "net/minecraft/client/gui/achievement/GuiAchievement",
       "net/minecraft/client/gui/achievement/GuiAchievements",
@@ -180,12 +181,35 @@ public class Setup {
     return result;
   }
 
-  public static void setupIfNecessary() {
-    FileInjector assetInjector = new FileInjector(ReWind.modFile);
+  private static Map<String, String> extractLang(Map<String, String> lang) {
+    Map<String, String> extracted = new HashMap<>();
 
-    if (assetInjector.exists(CREDITS_FILENAME)) {
-      return;
+    for (String key : ACHIEVEMENT_LANG_KES) {
+      extracted.put(key, lang.get(key));
     }
+
+    return extracted;
+  }
+
+  @Override
+  public String getModID() {
+    return ReWind.MODID;
+  }
+
+  @Override
+  public boolean needsSetup() {
+    FileInjector assetInjector = new FileInjector(ReWind.modFile);
+    return !assetInjector.exists(CREDITS_FILENAME);
+  }
+
+  @Override
+  public boolean needsRestart() {
+    return true;
+  }
+
+  @Override
+  public void setup() {
+    FileInjector assetInjector = new FileInjector(ReWind.modFile);
 
     ReWind.logger.info("Beginning setup...");
     Stopwatch swTotal = new Stopwatch();
@@ -204,7 +228,7 @@ public class Setup {
         sw.start();
 
         JarEntry entry =
-            client1_11_2.getJarEntry(classNameToPath(className1_11_2));
+                client1_11_2.getJarEntry(classNameToPath(className1_11_2));
         InputStream is = client1_11_2.getInputStream(entry);
         byte[] bytes = IOHelper.readAllBytes(is);
 
@@ -219,35 +243,35 @@ public class Setup {
 
         sw.stop();
         ReWind.logger.info("Remapped " + className1_11_2 + " in " +
-                           sw.getElapsedInSeconds() + "s.");
+                sw.getElapsedInSeconds() + "s.");
       }
 
       for (String file : FILES) {
         sw.start();
 
         byte[] bytes = IOHelper.readAllBytes(
-            client1_11_2.getInputStream(client1_11_2.getJarEntry(file)));
+                client1_11_2.getInputStream(client1_11_2.getJarEntry(file)));
         assetInjector.add(file, bytes);
         cg.add(Assets.client1_11_2, file);
 
         sw.stop();
         ReWind.logger.info("Extracted " + file + " in " +
-                           sw.getElapsedInSeconds() + "s.");
+                sw.getElapsedInSeconds() + "s.");
       }
 
       sw.start();
 
       String langEnUs = IOHelper.readAllUTF8(client1_11_2.getInputStream(
-          client1_11_2.getJarEntry(LANG_EN_US_FILENAME)));
+              client1_11_2.getJarEntry(LANG_EN_US_FILENAME)));
       Map<String, String> enUs = RawLanguageMap.parse(langEnUs);
       assetInjector.add("assets/rewind/lang/en_us.lang",
-                        RawLanguageMap.stringify(extractLang(enUs))
-                            .getBytes(StandardCharsets.UTF_8));
+              RawLanguageMap.stringify(extractLang(enUs))
+                      .getBytes(StandardCharsets.UTF_8));
       cg.add(Assets.client1_11_2, "assets/rewind/lang/en_us.lang");
 
       sw.stop();
       ReWind.logger.info("Generated assets/rewind/lang/en_us.lang"
-                         + " in " + sw.getElapsedInSeconds() + "s.");
+              + " in " + sw.getElapsedInSeconds() + "s.");
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
@@ -259,39 +283,39 @@ public class Setup {
         sw.start();
 
         byte[] bytes = IOHelper.readAllBytes(
-            client1_7_10.getInputStream(client1_7_10.getJarEntry(e.getKey())));
+                client1_7_10.getInputStream(client1_7_10.getJarEntry(e.getKey())));
         assetInjector.add(e.getValue(), bytes);
         cg.add(Assets.client1_7_10, e.getValue());
 
         sw.stop();
         ReWind.logger.info("Extracted " + e.getKey() + " in " +
-                           sw.getElapsedInSeconds() + "s.");
+                sw.getElapsedInSeconds() + "s.");
       }
 
       sw.start();
 
       BufferedImage inventory =
-          ImageIO.read(client1_7_10.getInputStream(client1_7_10.getEntry(
-              "assets/minecraft/textures/gui/container/inventory.png")));
+              ImageIO.read(client1_7_10.getInputStream(client1_7_10.getEntry(
+                      "assets/minecraft/textures/gui/container/inventory.png")));
       BufferedImage absorption =
-          TextureEditor.cropImage(inventory, 36, 234, 18, 18);
+              TextureEditor.cropImage(inventory, 36, 234, 18, 18);
       ByteArrayOutputStream os = new ByteArrayOutputStream();
       ImageIO.write(absorption, "png", os);
       assetInjector.add("assets/rewind/textures/gui/container/absorption.png",
-                        os.toByteArray());
+              os.toByteArray());
       cg.add(Assets.client1_7_10,
-             "assets/rewind/textures/gui/container/absorption.png");
+              "assets/rewind/textures/gui/container/absorption.png");
 
       sw.stop();
       ReWind.logger.info(
-          "Generated assets/rewind/textures/gui/container/absorption.png in " +
-          sw.getElapsedInSeconds() + "s.");
+              "Generated assets/rewind/textures/gui/container/absorption.png in " +
+                      sw.getElapsedInSeconds() + "s.");
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
 
     assetInjector.add(CREDITS_FILENAME,
-                      cg.generate().getBytes(StandardCharsets.UTF_8));
+            cg.generate().getBytes(StandardCharsets.UTF_8));
 
     ReWind.logger.info("Injecting files...");
     sw.start();
@@ -301,7 +325,7 @@ public class Setup {
 
     swTotal.stop();
     ReWind.logger.info("Setup completed in " + swTotal.getElapsedInSeconds() +
-                       "s.");
+            "s.");
 
     try {
       UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -311,20 +335,7 @@ public class Setup {
     }
 
     JOptionPane.showMessageDialog(
-        null, "ReWind has been set up successfully. Please restart the game.",
-        "ReWind", JOptionPane.INFORMATION_MESSAGE);
-
-    throw new IntentionalSetupException(
-        "This is an intentional crash to force the game to restart. Please restart the game.");
-  }
-
-  private static Map<String, String> extractLang(Map<String, String> lang) {
-    Map<String, String> extracted = new HashMap<>();
-
-    for (String key : ACHIEVEMENT_LANG_KES) {
-      extracted.put(key, lang.get(key));
-    }
-
-    return extracted;
+            null, "ReWind has been set up successfully. Please restart the game.",
+            "ReWind", JOptionPane.INFORMATION_MESSAGE);
   }
 }
