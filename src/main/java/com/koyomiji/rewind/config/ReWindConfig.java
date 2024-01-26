@@ -193,9 +193,6 @@ public class ReWindConfig {
   @Config.Comment("[-1.8.9] Hunger exhaustion value from 1.8-era.")
   public static boolean traditionalExhaustionValue = true;
 
-  @Config.Comment("[-1.11.2] Flip bed texture horizontally.")
-  public static boolean traditionalBedSurfaceTexture = true;
-
   @Config.Comment(
       "[-1.8.9] Strength effect increases the player's damage by 130%, weakness effect decreases it by 50%, and the duration of potion effects is changed.")
   public static boolean traditionalPotionEffects = true;
@@ -215,6 +212,7 @@ public class ReWindConfig {
   public static boolean gravelPathInVillages = true;
 
   public static Sounds sounds = new Sounds();
+  public static LooksAndFeels looksAndFeels = new LooksAndFeels();
 
   public static class Sounds {
     @Config.Comment("[-1.8.9]") public boolean traditionalChestSound = true;
@@ -239,6 +237,10 @@ public class ReWindConfig {
     @Config.Comment("[-1.8.9]") public boolean noLeashKnotSound = true;
     @Config.Comment("[-1.8.9]") public boolean noPaintingSound = true;
     @Config.Comment("[-1.8.9]") public boolean traditionalGlassSound = true;
+  }
+
+  public static class LooksAndFeels {
+    @Config.Comment("[-1.11.2]") public boolean traditionalColors = true;
   }
 
   @Mod.EventBusSubscriber(modid = ReWind.MODID)

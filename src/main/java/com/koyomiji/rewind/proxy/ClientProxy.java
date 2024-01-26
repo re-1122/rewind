@@ -5,7 +5,7 @@ import com.koyomiji.rewind.ReWind;
 import com.koyomiji.rewind.config.ReWindConfig;
 import com.koyomiji.rewind.resources.NoBlockRotateResourcePack;
 import com.koyomiji.rewind.resources.TraditionalAbsorptionResourcePack;
-import com.koyomiji.rewind.resources.TraditionalBedResourcePack;
+import com.koyomiji.rewind.resources.TraditionalColorResourcePack;
 import com.koyomiji.rewind.resources.TraditionalGrassResourcePack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -49,8 +49,8 @@ public class ClientProxy extends CommonProxy {
       needReload = true;
     }
 
-    if (ReWindConfig.traditionalBedSurfaceTexture) {
-      accessor.getDefaultResourcePacks().add(new TraditionalBedResourcePack());
+    if (ReWindConfig.looksAndFeels.traditionalColors) {
+      accessor.getDefaultResourcePacks().add(new TraditionalColorResourcePack());
       needReload = true;
     }
 
