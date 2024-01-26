@@ -45,7 +45,7 @@ public class MixinItemBow {
          ItemStack itemstack, int i, float f, boolean flag1,
          ItemArrow itemarrow, EntityArrow entityarrow) {
     EnumHandSide side = HandUtil.toHandSide(entityplayer.getPrimaryHand(),
-                                              entityplayer.getActiveHand());
+                                            entityplayer.getActiveHand());
     ((ISidedShootable)entityarrow)
         .shoot(entityplayer, entityplayer.rotationPitch,
                entityplayer.rotationYaw, 0.0F, f * 3.0F, 1.0F, side);

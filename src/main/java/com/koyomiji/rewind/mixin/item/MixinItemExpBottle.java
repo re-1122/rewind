@@ -44,8 +44,7 @@ public class MixinItemExpBottle {
   mixin2(World worldIn, EntityPlayer playerIn, EnumHand handIn,
          CallbackInfoReturnable<ActionResult<ItemStack>> cir,
          ItemStack itemstack, EntityExpBottle entityexpbottle) {
-    EnumHandSide side =
-        HandUtil.toHandSide(playerIn.getPrimaryHand(), handIn);
+    EnumHandSide side = HandUtil.toHandSide(playerIn.getPrimaryHand(), handIn);
     ((ISidedShootable)entityexpbottle)
         .shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F,
                0.7F, 1.0F, side);

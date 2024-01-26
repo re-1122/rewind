@@ -1,14 +1,13 @@
 package com.koyomiji.rewind.item;
 
+import java.util.HashMap;
+import java.util.Map;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.item.EnumDyeColor;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class DyeUtil {
   private static final Map<EnumDyeColor, MapColor> DYE_TO_MAP_COLOR =
-          new HashMap<>();
+      new HashMap<>();
 
   static {
     DYE_TO_MAP_COLOR.put(EnumDyeColor.WHITE, MapColor.SNOW);

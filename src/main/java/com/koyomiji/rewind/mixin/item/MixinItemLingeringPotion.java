@@ -44,8 +44,7 @@ public class MixinItemLingeringPotion {
   mixin2(World worldIn, EntityPlayer playerIn, EnumHand handIn,
          CallbackInfoReturnable<ActionResult<ItemStack>> cir,
          ItemStack itemstack, ItemStack itemstack1, EntityPotion entitypotion) {
-    EnumHandSide side =
-        HandUtil.toHandSide(playerIn.getPrimaryHand(), handIn);
+    EnumHandSide side = HandUtil.toHandSide(playerIn.getPrimaryHand(), handIn);
     ((ISidedShootable)entitypotion)
         .shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F,
                0.5F, 1.0F, side);

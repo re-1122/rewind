@@ -1,7 +1,7 @@
 package com.koyomiji.rewind.mixin.entity;
 
-import com.koyomiji.rewind.util.EnchantmentUtil;
 import com.koyomiji.rewind.config.ReWindConfig;
+import com.koyomiji.rewind.util.EnchantmentUtil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

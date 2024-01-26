@@ -44,8 +44,7 @@ public class MixinItemEnderPearl {
   mixin2(World worldIn, EntityPlayer playerIn, EnumHand handIn,
          CallbackInfoReturnable<ActionResult<ItemStack>> cir,
          ItemStack itemstack, EntityEnderPearl entityenderpearl) {
-    EnumHandSide side =
-        HandUtil.toHandSide(playerIn.getPrimaryHand(), handIn);
+    EnumHandSide side = HandUtil.toHandSide(playerIn.getPrimaryHand(), handIn);
     ((ISidedShootable)entityenderpearl)
         .shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F,
                1.5F, 1.0F, side);

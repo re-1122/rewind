@@ -50,7 +50,8 @@ public class ClientProxy extends CommonProxy {
     }
 
     if (ReWindConfig.looksAndFeels.traditionalColors) {
-      accessor.getDefaultResourcePacks().add(new TraditionalColorResourcePack());
+      accessor.getDefaultResourcePacks().add(
+          new TraditionalColorResourcePack());
       needReload = true;
     }
 

@@ -28,10 +28,13 @@ public class CommonProxy {
   @SubscribeEvent
   public static void registerSounds(RegistryEvent.Register<SoundEvent> event) {
     event.getRegistry().registerAll(
-        ReWindSoundEvents.BLOCK_CHEST_OPEN = createSoundEvent("block.chest.open"),
-        ReWindSoundEvents.BLOCK_CHEST_CLOSE = createSoundEvent("block.chest.close"),
+        ReWindSoundEvents.BLOCK_CHEST_OPEN =
+            createSoundEvent("block.chest.open"),
+        ReWindSoundEvents.BLOCK_CHEST_CLOSE =
+            createSoundEvent("block.chest.close"),
         ReWindSoundEvents.BLOCK_DOOR_OPEN = createSoundEvent("block.door.open"),
-        ReWindSoundEvents.BLOCK_DOOR_CLOSE = createSoundEvent("block.door.close"),
+        ReWindSoundEvents.BLOCK_DOOR_CLOSE =
+            createSoundEvent("block.door.close"),
         ReWindSoundEvents.BLOCK_TRAPDOOR_OPEN =
             createSoundEvent("block.trapdoor.open"),
         ReWindSoundEvents.BLOCK_TRAPDOOR_CLOSE =
