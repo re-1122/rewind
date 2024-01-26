@@ -1,9 +1,9 @@
-package com.koyomiji.rewind;
+package com.koyomiji.rewind.util;
 
 import com.koyomiji.rewind.config.ReWindConfig;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
-public class VillagerHelper {
+public class VillagerUtil {
   public static boolean
   shouldKeepVillager(VillagerRegistry.VillagerProfession prof) {
     return !shouldRemoveVillager(prof);

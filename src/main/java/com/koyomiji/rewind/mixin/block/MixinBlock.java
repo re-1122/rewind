@@ -1,7 +1,6 @@
 package com.koyomiji.rewind.mixin.block;
 
-import com.koyomiji.rewind.SoundRegistry;
-import com.koyomiji.rewind.SoundTypes;
+import com.koyomiji.rewind.ReWindSoundType;
 import com.koyomiji.rewind.config.ReWindConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -21,7 +20,7 @@ public class MixinBlock {
   private void mixin1(SoundType sound, CallbackInfoReturnable<Block> cir) {
     if (ReWindConfig.sounds.traditionalGlassSound) {
       if (sound == SoundType.GLASS) {
-        blockSoundType = SoundTypes.GLASS;
+        blockSoundType = ReWindSoundType.GLASS;
         cir.setReturnValue((Block)(Object)this);
       }
     }

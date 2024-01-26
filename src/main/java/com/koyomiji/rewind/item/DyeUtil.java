@@ -1,4 +1,4 @@
-package com.koyomiji.rewind;
+package com.koyomiji.rewind.item;
 
 import net.minecraft.block.material.MapColor;
 import net.minecraft.item.EnumDyeColor;

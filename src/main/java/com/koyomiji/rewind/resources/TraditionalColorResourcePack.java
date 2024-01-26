@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import javax.annotation.Nullable;
 
-import com.koyomiji.rewind.util.PathHelper;
+import com.koyomiji.rewind.util.PathUtil;
 import net.minecraft.client.resources.IResourcePack;
 import net.minecraft.client.resources.data.IMetadataSection;
 import net.minecraft.client.resources.data.MetadataSerializer;
@@ -105,7 +105,7 @@ public class TraditionalColorResourcePack implements IResourcePack {
   public InputStream getInputStream(ResourceLocation location) throws IOException {
     ResourceLocation mapped = new ResourceLocation(map.get(location.toString()));
     return ReWind.getInputStream(
-            PathHelper.concatUnix("assets/rewind/", mapped.getPath()));
+            PathUtil.concatUnix("assets/rewind/", mapped.getPath()));
   }
 
   @Override

@@ -6,7 +6,7 @@ import com.koyomiji.refound.asset.AssetIdentifier;
 import com.koyomiji.refound.asset.FileInjector;
 import com.koyomiji.refound.setup.ISetupProcess;
 import com.koyomiji.rewind.ReWind;
-import com.koyomiji.rewind.TextureEditor;
+import com.koyomiji.rewind.util.TextureEditor;
 import com.koyomiji.rewind.remapper.DirectClassRemapper;
 import com.koyomiji.rewind.remapper.FMLClassRemapper;
 import com.koyomiji.rewind.remapper.IOHelper;

@@ -1,4 +1,4 @@
-package com.koyomiji.rewind;
+package com.koyomiji.rewind.util;
 
 import java.util.HashMap;
 import java.util.Iterator;

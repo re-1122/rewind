@@ -1,7 +1,7 @@
 package com.koyomiji.rewind.mixin.forge.fml.common.registry;
 
-import com.koyomiji.rewind.FilteredRegistryNamaspaced;
-import com.koyomiji.rewind.VillagerHelper;
+import com.koyomiji.rewind.util.FilteredRegistryNamaspaced;
+import com.koyomiji.rewind.util.VillagerUtil;
 import java.util.Random;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.RegistryNamespaced;
@@ -25,7 +25,7 @@ public class MixinVillagerRegistry {
                            VillagerRegistry.VillagerProfession> instance,
         Random random) {
     return new FilteredRegistryNamaspaced<>(instance,
-                                            VillagerHelper::shouldKeepVillager)
+                                            VillagerUtil::shouldKeepVillager)
         .getRandomObject(random);
   }
 
@@ -42,7 +42,7 @@ public class MixinVillagerRegistry {
                             VillagerRegistry.VillagerProfession> instance,
          Random random) {
     return new FilteredRegistryNamaspaced<>(instance,
-                                            VillagerHelper::shouldKeepVillager)
+                                            VillagerUtil::shouldKeepVillager)
         .getRandomObject(random);
   }
 }

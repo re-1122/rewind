@@ -1,4 +1,4 @@
-package com.koyomiji.rewind;
+package com.koyomiji.rewind.util;
 
 import com.koyomiji.rewind.config.ReWindConfig;
 import java.util.Random;
@@ -8,7 +8,7 @@ import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 
-public class EnchantmentHandler {
+public class EnchantmentUtil {
   public static boolean shouldKeepEnchantment(Enchantment enchantment) {
     return !shouldRemoveEnchantment(enchantment);
   }

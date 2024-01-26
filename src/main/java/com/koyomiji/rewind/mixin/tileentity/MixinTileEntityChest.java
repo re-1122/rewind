@@ -1,6 +1,6 @@
 package com.koyomiji.rewind.mixin.tileentity;
 
-import com.koyomiji.rewind.SoundRegistry;
+import com.koyomiji.rewind.ReWindSoundEvents;
 import com.koyomiji.rewind.config.ReWindConfig;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.tileentity.TileEntityChest;
@@ -21,7 +21,7 @@ public class MixinTileEntityChest {
   private SoundEvent
   mixin0() {
     if (ReWindConfig.sounds.traditionalChestSound) {
-      return SoundRegistry.BLOCK_CHEST_OPEN;
+      return ReWindSoundEvents.BLOCK_CHEST_OPEN;
     }
 
     return SoundEvents.BLOCK_CHEST_OPEN;
@@ -37,7 +37,7 @@ public class MixinTileEntityChest {
   private SoundEvent
   mixin1() {
     if (ReWindConfig.sounds.traditionalChestSound) {
-      return SoundRegistry.BLOCK_CHEST_CLOSE;
+      return ReWindSoundEvents.BLOCK_CHEST_CLOSE;
     }
 
     return SoundEvents.BLOCK_CHEST_CLOSE;

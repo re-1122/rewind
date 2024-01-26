@@ -1,7 +1,7 @@
 package com.koyomiji.rewind.mixin.item;
 
 import com.koyomiji.rewind.entity.ISidedShootable;
-import com.koyomiji.rewind.util.HandHelper;
+import com.koyomiji.rewind.util.HandUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityExpBottle;
 import net.minecraft.entity.player.EntityPlayer;
@@ -45,7 +45,7 @@ public class MixinItemExpBottle {
          CallbackInfoReturnable<ActionResult<ItemStack>> cir,
          ItemStack itemstack, EntityExpBottle entityexpbottle) {
     EnumHandSide side =
-        HandHelper.toHandSide(playerIn.getPrimaryHand(), handIn);
+        HandUtil.toHandSide(playerIn.getPrimaryHand(), handIn);
     ((ISidedShootable)entityexpbottle)
         .shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F,
                0.7F, 1.0F, side);

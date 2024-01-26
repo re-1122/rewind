@@ -1,24 +1,17 @@
 package com.koyomiji.rewind.resources;
 
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.koyomiji.refound.interfaces.IDefaultResourcePacksAccessor;
 import com.koyomiji.refound.resources.ResourcePackModifier;
 import com.koyomiji.refound.resources.ResourcePackUtil;
 import com.koyomiji.rewind.ReWind;
-import com.koyomiji.rewind.TextureEditor;
+import com.koyomiji.rewind.util.TextureEditor;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Set;
 import javax.annotation.Nullable;
 import javax.imageio.ImageIO;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.IResourcePack;
+
 import net.minecraft.client.resources.data.IMetadataSection;
 import net.minecraft.client.resources.data.MetadataSerializer;
 import net.minecraft.util.ResourceLocation;

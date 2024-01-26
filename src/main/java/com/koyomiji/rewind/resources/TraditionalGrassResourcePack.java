@@ -3,7 +3,7 @@ package com.koyomiji.rewind.resources;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import com.koyomiji.rewind.ReWind;
-import com.koyomiji.rewind.util.PathHelper;
+import com.koyomiji.rewind.util.PathUtil;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,7 +24,7 @@ public class TraditionalGrassResourcePack implements IResourcePack {
   public InputStream getInputStream(ResourceLocation location)
       throws IOException {
     return ReWind.getInputStream(
-        PathHelper.concatUnix("assets/rewind/", location.getPath()));
+        PathUtil.concatUnix("assets/rewind/", location.getPath()));
   }
 
   @Override

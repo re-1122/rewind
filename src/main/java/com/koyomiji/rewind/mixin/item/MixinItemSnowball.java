@@ -1,7 +1,7 @@
 package com.koyomiji.rewind.mixin.item;
 
 import com.koyomiji.rewind.entity.ISidedShootable;
-import com.koyomiji.rewind.util.HandHelper;
+import com.koyomiji.rewind.util.HandUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySnowball;
@@ -45,7 +45,7 @@ public class MixinItemSnowball {
          CallbackInfoReturnable<ActionResult<ItemStack>> cir,
          ItemStack itemstack, EntitySnowball entitysnowball) {
     EnumHandSide side =
-        HandHelper.toHandSide(playerIn.getPrimaryHand(), handIn);
+        HandUtil.toHandSide(playerIn.getPrimaryHand(), handIn);
     ((ISidedShootable)entitysnowball)
         .shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F,
                1.5F, 1.0F, side);

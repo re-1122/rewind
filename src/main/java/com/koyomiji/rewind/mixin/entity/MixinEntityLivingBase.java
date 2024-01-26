@@ -1,6 +1,6 @@
 package com.koyomiji.rewind.mixin.entity;
 
-import com.koyomiji.rewind.EnchantmentHandler;
+import com.koyomiji.rewind.util.EnchantmentUtil;
 import com.koyomiji.rewind.config.ReWindConfig;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -141,7 +141,7 @@ public abstract class MixinEntityLivingBase extends Entity {
   public int
   mixin5(Iterable<ItemStack> stacks, DamageSource source) {
     if (ReWindConfig.oldCombat) {
-      return EnchantmentHandler.getEnchantmentModifierDamageOld(stacks, source);
+      return EnchantmentUtil.getEnchantmentModifierDamageOld(stacks, source);
     }
 
     return EnchantmentHelper.getEnchantmentModifierDamage(stacks, source);

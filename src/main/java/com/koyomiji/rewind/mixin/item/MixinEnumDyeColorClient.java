@@ -1,6 +1,6 @@
 package com.koyomiji.rewind.mixin.item;
 
-import com.koyomiji.rewind.DyeUtil;
+import com.koyomiji.rewind.item.DyeUtil;
 import com.koyomiji.rewind.config.ReWindConfig;
 import net.minecraft.item.EnumDyeColor;
 import org.spongepowered.asm.mixin.Mixin;

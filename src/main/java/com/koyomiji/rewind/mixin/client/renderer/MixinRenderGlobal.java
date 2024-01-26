@@ -1,6 +1,6 @@
 package com.koyomiji.rewind.mixin.client.renderer;
 
-import com.koyomiji.rewind.SoundRegistry;
+import com.koyomiji.rewind.ReWindSoundEvents;
 import com.koyomiji.rewind.config.ReWindConfig;
 import com.koyomiji.rewind.debug.*;
 import java.util.Set;
@@ -65,7 +65,7 @@ public abstract class MixinRenderGlobal
   private SoundEvent
   mixin0() {
     if (ReWindConfig.sounds.traditionalDoorSound) {
-      return SoundRegistry.BLOCK_DOOR_CLOSE;
+      return ReWindSoundEvents.BLOCK_DOOR_CLOSE;
     }
 
     return SoundEvents.BLOCK_WOODEN_DOOR_CLOSE;
@@ -81,7 +81,7 @@ public abstract class MixinRenderGlobal
   private SoundEvent
   mixin1() {
     if (ReWindConfig.sounds.traditionalDoorSound) {
-      return SoundRegistry.BLOCK_DOOR_CLOSE;
+      return ReWindSoundEvents.BLOCK_DOOR_CLOSE;
     }
 
     return SoundEvents.BLOCK_IRON_DOOR_CLOSE;
@@ -97,7 +97,7 @@ public abstract class MixinRenderGlobal
   private SoundEvent
   mixin2() {
     if (ReWindConfig.sounds.traditionalDoorSound) {
-      return SoundRegistry.BLOCK_TRAPDOOR_CLOSE;
+      return ReWindSoundEvents.BLOCK_TRAPDOOR_CLOSE;
     }
 
     return SoundEvents.BLOCK_WOODEN_TRAPDOOR_CLOSE;
@@ -113,7 +113,7 @@ public abstract class MixinRenderGlobal
   private SoundEvent
   mixin3() {
     if (ReWindConfig.sounds.traditionalDoorSound) {
-      return SoundRegistry.BLOCK_TRAPDOOR_CLOSE;
+      return ReWindSoundEvents.BLOCK_TRAPDOOR_CLOSE;
     }
 
     return SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE;
@@ -129,7 +129,7 @@ public abstract class MixinRenderGlobal
   private SoundEvent
   mixin4() {
     if (ReWindConfig.sounds.traditionalDoorSound) {
-      return SoundRegistry.BLOCK_DOOR_OPEN;
+      return ReWindSoundEvents.BLOCK_DOOR_OPEN;
     }
 
     return SoundEvents.BLOCK_WOODEN_DOOR_OPEN;
@@ -145,7 +145,7 @@ public abstract class MixinRenderGlobal
   private SoundEvent
   mixin5() {
     if (ReWindConfig.sounds.traditionalDoorSound) {
-      return SoundRegistry.BLOCK_DOOR_OPEN;
+      return ReWindSoundEvents.BLOCK_DOOR_OPEN;
     }
 
     return SoundEvents.BLOCK_IRON_DOOR_OPEN;
@@ -161,7 +161,7 @@ public abstract class MixinRenderGlobal
   private SoundEvent
   mixin6() {
     if (ReWindConfig.sounds.traditionalDoorSound) {
-      return SoundRegistry.BLOCK_TRAPDOOR_OPEN;
+      return ReWindSoundEvents.BLOCK_TRAPDOOR_OPEN;
     }
 
     return SoundEvents.BLOCK_WOODEN_TRAPDOOR_OPEN;
@@ -177,7 +177,7 @@ public abstract class MixinRenderGlobal
   private SoundEvent
   mixin7() {
     if (ReWindConfig.sounds.traditionalDoorSound) {
-      return SoundRegistry.BLOCK_TRAPDOOR_OPEN;
+      return ReWindSoundEvents.BLOCK_TRAPDOOR_OPEN;
     }
 
     return SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN;
@@ -193,7 +193,7 @@ public abstract class MixinRenderGlobal
   private SoundEvent
   mixin8() {
     if (ReWindConfig.sounds.traditionalDoorSound) {
-      return SoundRegistry.BLOCK_FENCE_GATE_CLOSE;
+      return ReWindSoundEvents.BLOCK_FENCE_GATE_CLOSE;
     }
 
     return SoundEvents.BLOCK_FENCE_GATE_CLOSE;
@@ -209,7 +209,7 @@ public abstract class MixinRenderGlobal
   private SoundEvent
   mixin9() {
     if (ReWindConfig.sounds.traditionalDoorSound) {
-      return SoundRegistry.BLOCK_FENCE_GATE_OPEN;
+      return ReWindSoundEvents.BLOCK_FENCE_GATE_OPEN;
     }
 
     return SoundEvents.BLOCK_FENCE_GATE_OPEN;

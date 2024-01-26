@@ -1,7 +1,7 @@
 package com.koyomiji.rewind.mixin.item;
 
 import com.koyomiji.rewind.entity.ISidedShootable;
-import com.koyomiji.rewind.util.HandHelper;
+import com.koyomiji.rewind.util.HandUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -44,7 +44,7 @@ public class MixinItemBow {
          int timeLeft, CallbackInfo ci, EntityPlayer entityplayer, boolean flag,
          ItemStack itemstack, int i, float f, boolean flag1,
          ItemArrow itemarrow, EntityArrow entityarrow) {
-    EnumHandSide side = HandHelper.toHandSide(entityplayer.getPrimaryHand(),
+    EnumHandSide side = HandUtil.toHandSide(entityplayer.getPrimaryHand(),
                                               entityplayer.getActiveHand());
     ((ISidedShootable)entityarrow)
         .shoot(entityplayer, entityplayer.rotationPitch,

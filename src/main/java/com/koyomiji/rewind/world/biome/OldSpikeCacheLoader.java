@@ -2,8 +2,8 @@ package com.koyomiji.rewind.world.biome;
 
 import com.google.common.cache.CacheLoader;
 import com.google.common.collect.*;
-import com.koyomiji.rewind.ChunkLocation;
-import com.koyomiji.rewind.PartialWorld;
+import com.koyomiji.rewind.world.ChunkLocation;
+import com.koyomiji.rewind.world.PartialWorld;
 import com.koyomiji.rewind.world.gen.feature.OldEndSpike;
 import java.util.*;
 import net.minecraft.init.Blocks;

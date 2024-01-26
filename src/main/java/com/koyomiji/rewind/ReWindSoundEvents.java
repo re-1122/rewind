@@ -2,7 +2,7 @@ package com.koyomiji.rewind;
 
 import net.minecraft.util.SoundEvent;
 
-public class SoundRegistry {
+public class ReWindSoundEvents {
   public static SoundEvent BLOCK_CHEST_OPEN;
   public static SoundEvent BLOCK_CHEST_CLOSE;
   public static SoundEvent BLOCK_DOOR_OPEN;
