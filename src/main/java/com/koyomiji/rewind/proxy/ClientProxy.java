@@ -24,10 +24,14 @@ import net.minecraftforge.fml.relauncher.Side;
 @Mod.EventBusSubscriber(modid = ReWind.MODID, value = Side.CLIENT)
 public class ClientProxy extends CommonProxy {
   @Override
-  public void preInit(FMLPreInitializationEvent event) {}
+  public void preInit(FMLPreInitializationEvent event) {
+    super.preInit(event);
+  }
 
   @Override
   public void init(FMLInitializationEvent event) {
+    super.init(event);
+
     boolean needReload = false;
     IDefaultResourcePacksAccessor accessor =
         ((IDefaultResourcePacksAccessor)Minecraft.getMinecraft());

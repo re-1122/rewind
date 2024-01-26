@@ -39,13 +39,6 @@ public class ReWind {
   public void preInit(FMLPreInitializationEvent event) throws IOException {
     logger = event.getModLog();
 
-    if (ReWindConfig.disableShieldRecipe) {
-      RecipeUnregisterer.unregisterRecipe(
-          new ResourceLocation("minecraft:shield"));
-      RecipeUnregisterer.unregisterAdvancement(
-          new ResourceLocation("minecraft:recipes/combat/shield"));
-    }
-
     modFile = event.getSourceFile();
     isDeobfuscatedEnvironment =
         (boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment");
@@ -56,10 +49,6 @@ public class ReWind {
   @Mod.EventHandler
   public void init(FMLInitializationEvent event) {
     proxy.init(event);
-
-    if (ReWindConfig.noTaigaVillage) {
-      BiomeManager.removeVillageBiome(Biomes.TAIGA);
-    }
   }
 
   @Mod.EventHandler

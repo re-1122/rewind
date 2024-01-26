@@ -1,9 +1,13 @@
 package com.koyomiji.rewind.proxy;
 
+import com.koyomiji.refound.RecipeUnregisterer;
 import com.koyomiji.rewind.ReWind;
 import com.koyomiji.rewind.ReWindSoundEvents;
+import com.koyomiji.rewind.config.ReWindConfig;
+import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -13,10 +17,20 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod.EventBusSubscriber(modid = ReWind.MODID)
 public class CommonProxy {
+  public void preInit(FMLPreInitializationEvent event) {
+    if (ReWindConfig.disableShieldRecipe) {
+      RecipeUnregisterer.unregisterRecipe(
+          new ResourceLocation("minecraft:shield"));
+      RecipeUnregisterer.unregisterAdvancement(
+          new ResourceLocation("minecraft:recipes/combat/shield"));
+    }
+  }
 
-  public void preInit(FMLPreInitializationEvent event) {}
-
-  public void init(FMLInitializationEvent event) {}
+  public void init(FMLInitializationEvent event) {
+    if (ReWindConfig.noTaigaVillage) {
+      BiomeManager.removeVillageBiome(Biomes.TAIGA);
+    }
+  }
 
   public void postInit(FMLPostInitializationEvent event) {}
 
