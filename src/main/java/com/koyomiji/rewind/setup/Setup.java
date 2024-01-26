@@ -36,9 +36,7 @@ public class Setup {
       "net/minecraft/util/JsonSerializableSet",
   };
 
-  private static final String[] FILES = {
-      "assets/minecraft/textures/gui/achievement/achievement_background.png",
-  };
+  private static final Map<String, String> FILES_1_11_2 = Maps.newHashMap();
 
   private static final String LANG_EN_US_FILENAME =
       "assets/minecraft/lang/en_us.lang";
@@ -143,6 +141,11 @@ public class Setup {
         "assets/rewind/textures/blocks/double_plant_grass_top.png");
     FILES_1_7_10.put("assets/minecraft/textures/blocks/tallgrass.png",
                      "assets/rewind/textures/blocks/tallgrass.png");
+
+    FILES_1_11_2.put("assets/minecraft/textures/gui/achievement/achievement_background.png",
+            "assets/minecraft/textures/gui/achievement/achievement_background.png");
+    FILES_1_11_2.put("assets/minecraft/textures/items/bed.png",
+            "assets/rewind/textures/items/bed_red_old.png");
   }
 
   private static final String CREDITS_FILENAME = "credits.txt";
@@ -222,16 +225,16 @@ public class Setup {
                            sw.getElapsedInSeconds() + "s.");
       }
 
-      for (String file : FILES) {
+      for (Map.Entry<String, String> e : FILES_1_11_2.entrySet()) {
         sw.start();
 
         byte[] bytes = IOHelper.readAllBytes(
-            client1_11_2.getInputStream(client1_11_2.getJarEntry(file)));
-        assetInjector.add(file, bytes);
-        cg.add(Assets.client1_11_2, file);
+            client1_11_2.getInputStream(client1_11_2.getJarEntry(e.getKey())));
+        assetInjector.add(e.getValue(), bytes);
+        cg.add(Assets.client1_11_2, e.getValue());
 
         sw.stop();
-        ReWind.logger.info("Extracted " + file + " in " +
+        ReWind.logger.info("Extracted " + e.getValue() + " in " +
                            sw.getElapsedInSeconds() + "s.");
       }
 
