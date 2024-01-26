@@ -111,6 +111,7 @@
     "client.gui.MixinGuiIngameMenu",
     "client.gui.MixinGuiMainMenu",
     "client.gui.MixinGuiOptions",
+    "client.gui.MixinGuiWinGame",
     "client.gui.achievement.MixinGuiAchievements",
     "client.gui.inventory.MixinCrafting",
     "client.gui.inventory.MixinGuiContainerCreative",
@@ -131,8 +132,8 @@
     "creativetab.MixinCreativeTabsClient",
     "entity.player.MixinEntityPlayerSP",
     "forge.client.MixinGuiIngameForge",
-    "item.MixinItemSplashPotionClient",
-    "item.MixinEnumDyeColorClient"
+    "item.MixinEnumDyeColorClient",
+    "item.MixinItemSplashPotionClient"
   ],
   "server": [
     "server.dedicated.MixinDedicatedServer"
