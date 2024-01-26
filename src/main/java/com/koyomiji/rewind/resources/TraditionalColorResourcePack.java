@@ -110,7 +110,6 @@ public class TraditionalColorResourcePack implements IResourcePack {
 
   @Override
   public boolean resourceExists(ResourceLocation location) {
-    ReWind.logger.info(location);
     return map.containsKey(location.toString());
   }
 
