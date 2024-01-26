@@ -83,6 +83,22 @@ public class TraditionalColorResourcePack implements IResourcePack {
     map.put("minecraft:textures/blocks/wool_colored_silver.png", "rewind:textures/blocks/wool_colored_silver_old.png");
     map.put("minecraft:textures/blocks/wool_colored_white.png", "rewind:textures/blocks/wool_colored_white_old.png");
     map.put("minecraft:textures/blocks/wool_colored_yellow.png", "rewind:textures/blocks/wool_colored_yellow_old.png");
+    map.put("rewind:models/item/black_bed.json", "rewind:models/item/black_bed_old.json");
+    map.put("rewind:models/item/blue_bed.json", "rewind:models/item/blue_bed_old.json");
+    map.put("rewind:models/item/brown_bed.json", "rewind:models/item/brown_bed_old.json");
+    map.put("rewind:models/item/cyan_bed.json", "rewind:models/item/cyan_bed_old.json");
+    map.put("rewind:models/item/gray_bed.json", "rewind:models/item/gray_bed_old.json");
+    map.put("rewind:models/item/green_bed.json", "rewind:models/item/green_bed_old.json");
+    map.put("rewind:models/item/light_blue_bed.json", "rewind:models/item/light_blue_bed_old.json");
+    map.put("rewind:models/item/lime_bed.json", "rewind:models/item/lime_bed_old.json");
+    map.put("rewind:models/item/magenta_bed.json", "rewind:models/item/magenta_bed_old.json");
+    map.put("rewind:models/item/orange_bed.json", "rewind:models/item/orange_bed_old.json");
+    map.put("rewind:models/item/pink_bed.json", "rewind:models/item/pink_bed_old.json");
+    map.put("rewind:models/item/purple_bed.json", "rewind:models/item/purple_bed_old.json");
+    map.put("rewind:models/item/red_bed.json", "rewind:models/item/red_bed_old.json");
+    map.put("rewind:models/item/silver_bed.json", "rewind:models/item/silver_bed_old.json");
+    map.put("rewind:models/item/white_bed.json", "rewind:models/item/white_bed_old.json");
+    map.put("rewind:models/item/yellow_bed.json", "rewind:models/item/yellow_bed_old.json");
   }
 
   @Override
@@ -94,12 +110,13 @@ public class TraditionalColorResourcePack implements IResourcePack {
 
   @Override
   public boolean resourceExists(ResourceLocation location) {
+    ReWind.logger.info(location);
     return map.containsKey(location.toString());
   }
 
   @Override
   public Set<String> getResourceDomains() {
-    return ImmutableSet.of("minecraft");
+    return ImmutableSet.of("minecraft", "rewind");
   }
 
   @Nullable
