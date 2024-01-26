@@ -131,7 +131,8 @@
     "creativetab.MixinCreativeTabsClient",
     "entity.player.MixinEntityPlayerSP",
     "forge.client.MixinGuiIngameForge",
-    "item.MixinItemSplashPotionClient"
+    "item.MixinItemSplashPotionClient",
+    "item.MixinEnumDyeColorClient"
   ],
   "server": [
     "server.dedicated.MixinDedicatedServer"
