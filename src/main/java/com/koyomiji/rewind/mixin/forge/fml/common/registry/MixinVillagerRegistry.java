@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(value = VillagerRegistry.class, remap = false)
+@Mixin(value = VillagerRegistry.class)
 public class MixinVillagerRegistry {
   @Redirect(
       method =
