@@ -211,6 +211,9 @@ public class ReWindConfig {
   @Config.Comment("[-1.9.4] Replace grass path in villages with gravel.")
   public static boolean gravelPathInVillages = true;
 
+  @Config.Comment("[-1.10.2] Prevent leaving lingering cloud when a creeper with potion effect explodes.")
+  public static boolean noCreeperLingeringCloud = true;
+
   public static Sounds sounds = new Sounds();
   public static LooksAndFeels looksAndFeels = new LooksAndFeels();
 

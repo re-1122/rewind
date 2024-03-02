@@ -33,6 +33,7 @@
     "entity.item.MixinEntityItemFrame",
     "entity.item.MixinEntityPainting",
     "entity.monster.MixinAbstractSkeleton",
+    "entity.monster.MixinEntityCreeper",
     "entity.monster.MixinEntityGhast",
     "entity.monster.MixinEntityIronGolem",
     "entity.monster.MixinEntitySnowman",
